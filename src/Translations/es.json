@@ -1,0 +1,19 @@
+{
+  "es": {
+    "label": {
+      "email": "Email",
+      "password": "Clave",
+      "confirmPassword": "Confirmar clave"
+    },
+
+    "button": {
+      "login": "Ingrear",
+      "signup": "Registrarse",
+      "alreadyHaveUser": "¿Ya tiene un usuario?"
+    },
+
+    "validation": {
+      "required": "Campo reuquerido"
+    }
+  }
+}

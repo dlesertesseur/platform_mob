@@ -1,0 +1,19 @@
+{
+  "en": {
+    "label": {
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password"
+    },
+
+    "button": {
+      "login": "Login",
+      "signup": "Sign up",
+      "alreadyHaveUser": "Already Have User"
+    },
+
+    "validation": {
+      "required": "Required field"
+    }
+  }
+}
