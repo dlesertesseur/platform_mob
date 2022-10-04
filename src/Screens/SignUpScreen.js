@@ -4,12 +4,11 @@ import CustomTextInput from "../Components/CustomTextInput";
 import CustomButton from "../Components/CustomButton";
 import CustomLabel from "../Components/CustomLabel";
 import CustomImage from "../Components/CustomImage";
-import CustomLink from "../Components/CustomLink";
 import { useForm } from "react-hook-form";
 import { ImageBackground, StyleSheet, View } from "react-native";
 import { colors } from "../Styles/Colors";
 
-const LoginScreen = ({ navigation }) => {
+const SignUpScreen = ({ navigation }) => {
   const {
     control,
     handleSubmit,
@@ -21,15 +20,12 @@ const LoginScreen = ({ navigation }) => {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    
-  };
+  const onSubmit = (data) => console.log(data);
 
   const focusRef = useRef(null);
 
   const onSingIn = () => {
-    navigation.navigate("SignUp");
+    //navigation.navigate("SignUp");
   };
 
   useEffect(() => {
@@ -47,11 +43,11 @@ const LoginScreen = ({ navigation }) => {
         <CustomImage source={logo} style={styles.logo} />
 
         <CustomLabel
-          title={I18n.t("title.screen.login")}
-          text={I18n.t("title.screen.login-desc")}
+          style={styles.fieldLabel}
+          title={I18n.t("title.screen.signUp")}
+          text={I18n.t("title.screen.signUp-desc")}
           fontSize={30}
           color={colors.primary}
-          style={styles.fieldLabel}
         />
 
         <View style={styles.panel}>
@@ -71,40 +67,37 @@ const LoginScreen = ({ navigation }) => {
           />
 
           <CustomTextInput
+            style={styles.field}
             control={control}
-            name="password"
-            placeholder={I18n.t("label.password")}
+            name="firstName"
+            placeholder={I18n.t("label.firstName")}
             rules={{
               required: I18n.t("validation.required"),
-              minLength: {
-                value: 8,
-                message: I18n.t("validation.password.minLength"),
-              },
             }}
-            password={true}
           />
 
-          <CustomLink
-            text={I18n.t("label.forgotPassword")}
-            style={styles.forgotPassword}
+          <CustomTextInput
+            style={styles.fieldButton}
+            control={control}
+            name="lastName"
+            placeholder={I18n.t("label.lastName")}
+            rules={{
+              required: I18n.t("validation.required"),
+            }}
           />
+
           <CustomButton
-            text={I18n.t("button.login")}
+            text={I18n.t("button.signUp")}
             onPress={handleSubmit(onSubmit)}
           />
         </View>
 
-        <CustomLink
-          text={I18n.t("label.notAccount")}
-          style={styles.signup}
-          onPress={onSingIn}
-        />
       </ImageBackground>
     </View>
   );
 };
 
-export default LoginScreen;
+export default SignUpScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -114,6 +107,10 @@ const styles = StyleSheet.create({
 
   field: {
     marginBottom: 15,
+  },
+
+  fieldButton: {
+    marginBottom: 30,
   },
 
   image: {
@@ -131,18 +128,6 @@ const styles = StyleSheet.create({
     // backgroundColor: colors.secondary,
     padding: 15,
     margin: 15,
-  },
-
-  forgotPassword: {
-    height: 40,
-    alignItems: "flex-end",
-    marginBottom: 30,
-    color: colors.secondary,
-  },
-
-  signup: {
-    height: 40,
-    alignItems: "center",
   },
 
   fieldLabel: {

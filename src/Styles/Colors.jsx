@@ -1,8 +1,10 @@
 export const colors = {
-    primary: "#F9EBC8",
-    primaryDarker: "#DAE5D0",
-    primaryLighter: "#FEFBE7",
-    secondary: "#A0BCC2",
-    border:"#E0D3B4",
-    textInputColor:"#e5e5e5"
+    primary: "#512da8",
+    primaryDarker: "#140078",
+    primaryLighter: "#8559da",
+    secondary: "#e0e0e0",
+    error: "#ff0000",
+    errorText: "#ffffff",
+    background:"#ffffff",
+    panel:"rgba(221, 219, 255, 0.4)"
 }

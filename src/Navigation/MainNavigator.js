@@ -1,7 +1,7 @@
 import AuthStack from "./Stacks/AuthStack";
+import AppNavigator from "./AppNavigator";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { colors } from "../Styles/Colors";
 import { StyleSheet } from "react-native";
 import { useState } from "react";
 
@@ -25,7 +25,7 @@ export default MainNavigator = () => {
   return (
     <NavigationContainer>
       <SafeAreaView style={styles.container}>
-        {userLogged ? <AuthStack /> : <></>}
+        {!userLogged ? <AuthStack /> : <AppNavigator/>}
       </SafeAreaView>
     </NavigationContainer>
   );
@@ -34,6 +34,6 @@ export default MainNavigator = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.primaryLighter,
+    //backgroundColor: colors.background,
   },
 });

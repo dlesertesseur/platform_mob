@@ -3,17 +3,52 @@
     "label": {
       "email": "Email",
       "password": "Password",
-      "confirmPassword": "Confirm password"
+      "confirmPassword": "Confirm password",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "code": "Code"
     },
 
     "button": {
       "login": "Login",
-      "signup": "Sign up",
-      "alreadyHaveUser": "Already Have User"
+      "signUp": "Sign up",
+      "alreadyHaveUser": "Already Have User",
+      "forgotPassword": "Forgot yout password?",
+      "notAccount": "Don't have an account? Sign up",
+      "accept": "Accept",
+      "cancel": "Cancel",
+      "scan":"Scan"
     },
 
     "validation": {
-      "required": "Required field"
+      "required": "Required field",
+      "email": {
+        "invalid": "Invalid email"
+      },
+      "password": {
+        "minLength": "the password is too short"
+      }
+    },
+
+    "title": {
+      "screen": {
+        "login": "Welcome",
+        "login-desc": "We are very happy to see you, continue with the login and manage your applications",
+        "signUp": "Registration",
+        "signUp-desc": "Create an account and start managing all your resources in a centralized and organized way"
+      }
+    },
+
+    "tab": {
+      "task": "Tasks",
+      "timeAndAttendance": "Time & Attendance"
+    },
+
+    "message": {
+      "camera": {
+        "noAccess": "No access to camera",
+        "permission": "Requesting for camera permission"
+      }
     }
   }
 }

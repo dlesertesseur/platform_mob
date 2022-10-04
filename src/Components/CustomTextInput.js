@@ -1,26 +1,42 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { colors } from "../Styles/Colors";
+import { Controller } from "react-hook-form";
 
-const CustomTextInput = (props) => {
-  const { label, password = false, value, setValue, error, focusRef, aditionalStyle={} } = props;
-
+const CustomTextInput = ({
+  control,
+  name,
+  placeholder,
+  rules,
+  password = false,
+  style,
+  focusRef,
+}) => {
   return (
-
-    <View style={styles.container}>
-      <TextInput
-        style={[styles.inputText, aditionalStyle]}
-        placeholder={label}
-        secureTextEntry={password}
-        value={value}
-        onChangeText={setValue}
-        ref={focusRef}
-      />
-      {error
-      ? 
-      <Text style={styles.error}>{error}</Text>
-      :
-      <View style={styles.separator}></View>}
-    </View>
+    <Controller
+      control={control}
+      rules={rules}
+      render={({
+        field: { onChange, onBlur, value },
+        fieldState: { error },
+      }) => (
+        <View style={[styles.container, style]}>
+          <TextInput
+            style={[
+              styles.inputText,
+              { borderColor: error ? colors.error : colors.primary },
+            ]}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+            placeholder={placeholder}
+            secureTextEntry={password}
+            ref={focusRef}
+          />
+          {error ? <Text style={styles.error}>{error.message}</Text> : null}
+        </View>
+      )}
+      name={name}
+    />
   );
 };
 
@@ -33,13 +49,13 @@ const styles = StyleSheet.create({
 
   inputText: {
     width: "100%",
-    height: 40,
-    borderRadius: 6,
-    backgroundColor: colors.textInputBack,
+    borderRadius: 8,
+    //backgroundColor: colors.secondary,
     padding: 10,
-    color: "black",
+    color: colors.primary,
     fontSize: 18,
-    //fontWeight: "bold",
+    borderWidth: 1,
+    borderColor: colors.primary,
   },
 
   error: {
@@ -49,11 +65,10 @@ const styles = StyleSheet.create({
     fontSize: 11,
     marginBottom: 15,
   },
-  
+
   separator: {
     width: "100%",
     padding: 2,
     marginBottom: 15,
   },
-
 });
