@@ -1,37 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
 import i18n from "../Config/i18n";
-import { StyleSheet, View } from "react-native";
-import { colors } from "../Styles/Colors";
 import CustomError from "../Components/CustomError";
-import CustomButton from "../Components/CustomButton";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { colors } from "../Styles/Colors";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { Audio } from "expo-av";
-import { Sound } from "expo-av/build/Audio";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { addScannedProduct } from "../Features/Products";
+import { useDispatch } from "react-redux";
 
-const ScanScreen = () => {
+const ScanScreen = ({ barCode = true, qrCode = false }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
+  const [scanActived, setScanActived] = useState(false);
   const [error, setError] = useState(null);
-
   const [sound, setSound] = useState();
+  const dispatch = useDispatch();
 
   async function playSound() {
-    console.log('Loading Sound');
-    const { sound } = await Audio.Sound.createAsync( require('../../assets/sound/beep.mp3') );
+    const { sound } = await Audio.Sound.createAsync(
+      require("./../../assets/sound/beep_2.mp3")
+    );
     setSound(sound);
-
-    console.log('Playing Sound');
-    await Sound.playAsync(sound);
+    await sound.playAsync();
   }
-
-  useEffect(() => {
-    return sound
-      ? () => {
-          console.log('Unloading Sound');
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
@@ -46,6 +38,13 @@ const ScanScreen = () => {
     setScanned(true);
     playSound();
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+
+    const obj = {
+      id:Date.now(),
+      type: type,
+      ean: data,
+    };
+    dispatch(addScannedProduct(obj));
   };
 
   // if (hasPermission === null) {
@@ -74,17 +73,54 @@ const ScanScreen = () => {
   //   );
   // }
 
+  const activeScan = () => {
+    setScanActived(true);
+  };
+
+  const deactiveScan = () => {
+    setScanActived(false);
+    setScanned(false);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.panel}>
         {!error ? (
           <BarCodeScanner
-            onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-            style={StyleSheet.absoluteFill}
+            onBarCodeScanned={
+              !scanned && scanActived ? handleBarCodeScanned : undefined
+            }
+            style={StyleSheet.absoluteFillObject}
           />
         ) : (
           <CustomError title={i18n.t("title.error")} text={error} />
         )}
+      </View>
+      <View style={styles.control}>
+        <TouchableOpacity
+          style={[
+            styles.scanButton,
+            scanActived ? styles.scanButtonActived : styles.scanButtoninactived,
+          ]}
+          onPressIn={activeScan}
+          onPressOut={deactiveScan}
+        >
+          {barCode ? (
+            <MaterialCommunityIcons
+              name="barcode-scan"
+              size={48}
+              color="white"
+            />
+          ) : null}
+
+          {qrCode ? (
+            <MaterialCommunityIcons
+              name="qrcode-scan"
+              size={48}
+              color="white"
+            />
+          ) : null}
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -103,12 +139,41 @@ const styles = StyleSheet.create({
   panel: {
     flex: 1,
     borderRadius: 4,
-    backgroundColor: colors.secondary,
+    backgroundColor: "#000000",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    marginBottom: 10,
   },
 
-  field: {
-    marginBottom: 15,
+  control: {
+    borderRadius: 4,
+    alignItems: "center",
+    justifyContent: "center",
+    height: 90,
+  },
+
+  text: {
+    color: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
+    //fontWeight: "bold",
+    fontSize: 36,
+  },
+
+  scanButton: {
+    flexDirection: "row",
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    borderRadius: 4,
+  },
+
+  scanButtonActived: {
+    backgroundColor: "#FF0000",
+  },
+
+  scanButtoninactived: {
+    backgroundColor: "#00FF00",
   },
 });

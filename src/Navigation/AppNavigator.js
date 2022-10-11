@@ -1,11 +1,12 @@
 import React from "react";
-import TimeAndAttendanceScreen from "../Screens/TimeAndAttendanceScreen";
 import i18n from "../Config/i18n";
+import TimeAndAttendanceScreen from "../Screens/TimeAndAttendanceScreen";
 import TaskStack from "./Stacks/TaskStack";
+import AccountScreen from "../Screens/AccountScreen";
+import CustomTabBarIcon from "../Components/CustomTabBarIcon";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, View } from "react-native";
 import { colors } from "../Styles/Colors";
-import { FontAwesome5 } from "@expo/vector-icons";
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -19,15 +20,32 @@ const AppNavigator = () => {
       }}
     >
       <BottomTabs.Screen
+        name="users"
+        component={AccountScreen}
+        options={{
+          tabBarIcon: ({ focused }) => {
+            return (
+              <CustomTabBarIcon
+                text={i18n.t("tab.task")}
+                focused={focused}
+                iconName={"user-alt"}
+              />
+            );
+          },
+        }}
+      />
+
+      <BottomTabs.Screen
         name="tasksScreen"
         component={TaskStack}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
-              <View style={styles.item}>
-                <FontAwesome5 name="tasks" size={24} color={colors.secondary} />
-                <Text style={styles.text}>{i18n.t("tab.task")}</Text>
-              </View>
+              <CustomTabBarIcon
+                focused={focused}
+                text={i18n.t("tab.task")}
+                iconName={"tasks"}
+              />
             );
           },
         }}
@@ -38,16 +56,11 @@ const AppNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => {
             return (
-              <View style={styles.item}>
-                <FontAwesome5
-                  name="stopwatch"
-                  size={24}
-                  color={colors.secondary}
-                />
-                <Text style={styles.text}>
-                  {i18n.t("tab.timeAndAttendance")}
-                </Text>
-              </View>
+              <CustomTabBarIcon
+                focused={focused}
+                text={i18n.t("tab.timeAndAttendance")}
+                iconName={"stopwatch"}
+              />
             );
           },
         }}

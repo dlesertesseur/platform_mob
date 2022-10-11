@@ -41,7 +41,8 @@
 
     "tab": {
       "task": "Tasks",
-      "timeAndAttendance": "Time & Attendance"
+      "timeAndAttendance": "Productivity",
+      "user": "Account"
     },
 
     "message": {

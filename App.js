@@ -1,21 +1,22 @@
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { useFonts } from 'expo-font';
+import { useFonts } from "expo-font";
 
 import MainNavigator from "./src/Navigation/MainNavigator";
+import { Provider } from "react-redux";
+import Store from "./src/Store";
 
 export default function App() {
-
   const [loaded] = useFonts({
-    Montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
+    Montserrat: require("./assets/fonts/Montserrat-Regular.ttf"),
   });
 
   return (
-    <SafeAreaProvider style={styles.container}>
-      {loaded
-      ? <MainNavigator/>
-      : <ActivityIndicator size="large"/>}
-    </SafeAreaProvider>
+    <Provider store={Store}>
+      <SafeAreaProvider style={styles.container}>
+        {loaded ? <MainNavigator /> : <ActivityIndicator size="large" />}
+      </SafeAreaProvider>
+    </Provider>
   );
 }
 

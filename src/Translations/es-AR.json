@@ -41,7 +41,8 @@
 
     "tab": {
       "task": "Tareas",
-      "timeAndAttendance": "Tiempo y dedicacion"
+      "timeAndAttendance": "Productividad",
+      "user": "Perfil"
     },
     
     "message": {

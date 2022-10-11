@@ -26,7 +26,7 @@
       "email": {
         "invalid": "Email invalido"
       },
-      "password": {
+        "password": {
         "minLength": "La clave es demasiado corta"
       }
     },
@@ -42,7 +42,8 @@
 
     "tab": {
       "task": "Tareas",
-      "timeAndAttendance": "Tiempo y dedicacion"
+      "timeAndAttendance": "Productividad",
+      "user": "Perfil"
     },
     
     "message": {
