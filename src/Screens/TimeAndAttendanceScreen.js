@@ -1,14 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from "react";
+import CenterTextScreen from "../Components/CenterTextScreen";
+import { StyleSheet } from "react-native";
+import { colors } from "../Styles/Colors";
 
 const TimeAndAttendanceScreen = () => {
-  return (
-    <View>
-      <Text>Time And AttendanceScreen</Text>
-    </View>
-  )
-}
+  return <CenterTextScreen text={"Time And Attendance"} backgroundColor={colors.secondary}/>;
+};
 
-export default TimeAndAttendanceScreen
+export default TimeAndAttendanceScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

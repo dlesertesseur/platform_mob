@@ -7,7 +7,10 @@
       "forgotPassword": "¿Olvido su contraseña?",
       "firstName": "Nombre",
       "lastName": "Apellido",
-      "code": "Codigo"
+      "code": "Codigo",
+      "title":"Titulo",
+      "description": "Descripción",
+      "location":"Ubicacion"
     },
 
     "button": {
@@ -17,7 +20,10 @@
       "notAccount": "¿No tiene una cuenta? Registrese",
       "accept": "Aceptar",
       "cancel": "Cancelar",
-      "scan":"Escanear"
+      "scan": "Escanear",
+      "addPicture": "Adjuntar imagen",
+      "takePicture": "Tomar foto",
+      "send":"Enviar"
     },
 
     "validation": {
@@ -35,20 +41,24 @@
         "login": "Bienvenido",
         "login-desc": "Estamos muy felices de verlo, continue con el ingreso y administre sus aplicaciones",
         "signUp": "Registracion",
-        "signUp-desc": "Crea una cuenta y empieza a gestionar todos tus recursos de forma centralizada y organizada"
+        "signUp-desc": "Crea una cuenta y empieza a gestionar todos tus recursos de forma centralizada y organizada",
+        "alert": "Alerta",
+        "alert-desc": "Crea una alert para notificar algun problema documentando el detalle y agregar fotos si es necesario."
       }
     },
 
     "tab": {
       "task": "Tareas",
       "timeAndAttendance": "Productividad",
-      "user": "Perfil"
+      "user": "Perfil",
+      "alert": "Alertas"
     },
-    
+
     "message": {
       "camera": {
         "noAccess": "Sin acceso a la cámara",
-        "permission": "Solicitando permiso de acceso a la cámara"
+        "permission": "Solicitando permiso de acceso a la cámara",
+        "grantPermission": "Conceder permiso."
       }
     }
   }

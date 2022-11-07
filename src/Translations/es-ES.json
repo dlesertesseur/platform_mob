@@ -8,7 +8,10 @@
       "notAccount": "¿No tiene una cuenta? Registrese",
       "firstName": "Nombre",
       "lastName": "Apellido",
-      "code": "Codigo"
+      "code": "Codigo",
+      "title":"Titulo",
+      "description": "Descripción",
+      "location":"Ubicacion"
     },
 
     "button": {
@@ -36,7 +39,9 @@
         "login": "Bienvenido",
         "login-desc": "Estamos muy felices de verlo, continue con el ingreso y administre sus aplicaciones",
         "signUp": "Registracion",
-        "signUp-desc": "Crea una cuenta y empieza a gestionar todos tus recursos de forma centralizada y organizada"
+        "signUp-desc": "Crea una cuenta y empieza a gestionar todos tus recursos de forma centralizada y organizada",
+        "alert": "Alerta",
+        "alert-desc": "Crea una alert para notificar algun problema documentando el detalle y agregar fotos si es necesario."
       }
     },
 

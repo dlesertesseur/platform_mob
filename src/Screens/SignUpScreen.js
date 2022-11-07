@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import I18n from "../Config/i18n";
+import i18n from "../Config/i18n";
 import CustomTextInput from "../Components/CustomTextInput";
 import CustomButton from "../Components/CustomButton";
 import CustomLabel from "../Components/CustomLabel";
 import CustomImage from "../Components/CustomImage";
+import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { ImageBackground, StyleSheet, View } from "react-native";
 import { colors } from "../Styles/Colors";
@@ -44,8 +44,8 @@ const SignUpScreen = ({ navigation }) => {
 
         <CustomLabel
           style={styles.fieldLabel}
-          title={I18n.t("title.screen.signUp")}
-          text={I18n.t("title.screen.signUp-desc")}
+          title={i18n.t("title.screen.signUp")}
+          text={i18n.t("title.screen.signUp-desc")}
           fontSize={30}
           color={colors.primary}
         />
@@ -55,12 +55,12 @@ const SignUpScreen = ({ navigation }) => {
             style={styles.field}
             control={control}
             name="email"
-            placeholder={I18n.t("label.email")}
+            placeholder={i18n.t("label.email")}
             rules={{
-              required: I18n.t("validation.required"),
+              required: i18n.t("validation.required"),
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: I18n.t("validation.email.invalid"),
+                message: i18n.t("validation.email.invalid"),
               },
             }}
             //focusRef={focusRef}
@@ -70,9 +70,9 @@ const SignUpScreen = ({ navigation }) => {
             style={styles.field}
             control={control}
             name="firstName"
-            placeholder={I18n.t("label.firstName")}
+            placeholder={i18n.t("label.firstName")}
             rules={{
-              required: I18n.t("validation.required"),
+              required: i18n.t("validation.required"),
             }}
           />
 
@@ -80,14 +80,14 @@ const SignUpScreen = ({ navigation }) => {
             style={styles.fieldButton}
             control={control}
             name="lastName"
-            placeholder={I18n.t("label.lastName")}
+            placeholder={i18n.t("label.lastName")}
             rules={{
-              required: I18n.t("validation.required"),
+              required: i18n.t("validation.required"),
             }}
           />
 
           <CustomButton
-            text={I18n.t("button.signUp")}
+            text={i18n.t("button.signUp")}
             onPress={handleSubmit(onSubmit)}
           />
         </View>

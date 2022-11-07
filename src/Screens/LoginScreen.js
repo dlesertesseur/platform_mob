@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import I18n from "../Config/i18n";
+import i18n from "../Config/i18n";
 import CustomTextInput from "../Components/CustomTextInput";
 import CustomButton from "../Components/CustomButton";
 import CustomLabel from "../Components/CustomLabel";
@@ -47,8 +47,8 @@ const LoginScreen = ({ navigation }) => {
         <CustomImage source={logo} style={styles.logo} />
 
         <CustomLabel
-          title={I18n.t("title.screen.login")}
-          text={I18n.t("title.screen.login-desc")}
+          title={i18n.t("title.screen.login")}
+          text={i18n.t("title.screen.login-desc")}
           fontSize={30}
           color={colors.primary}
           style={styles.fieldLabel}
@@ -59,12 +59,12 @@ const LoginScreen = ({ navigation }) => {
             style={styles.field}
             control={control}
             name="email"
-            placeholder={I18n.t("label.email")}
+            placeholder={i18n.t("label.email")}
             rules={{
-              required: I18n.t("validation.required"),
+              required: i18n.t("validation.required"),
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: I18n.t("validation.email.invalid"),
+                message: i18n.t("validation.email.invalid"),
               },
             }}
             //focusRef={focusRef}
@@ -73,29 +73,29 @@ const LoginScreen = ({ navigation }) => {
           <CustomTextInput
             control={control}
             name="password"
-            placeholder={I18n.t("label.password")}
+            placeholder={i18n.t("label.password")}
             rules={{
-              required: I18n.t("validation.required"),
+              required: i18n.t("validation.required"),
               minLength: {
                 value: 8,
-                message: I18n.t("validation.password.minLength"),
+                message: i18n.t("validation.password.minLength"),
               },
             }}
             password={true}
           />
 
           <CustomLink
-            text={I18n.t("label.forgotPassword")}
+            text={i18n.t("label.forgotPassword")}
             style={styles.forgotPassword}
           />
           <CustomButton
-            text={I18n.t("button.login")}
+            text={i18n.t("button.login")}
             onPress={handleSubmit(onSubmit)}
           />
         </View>
 
         <CustomLink
-          text={I18n.t("label.notAccount")}
+          text={i18n.t("label.notAccount")}
           style={styles.signup}
           onPress={onSingIn}
         />

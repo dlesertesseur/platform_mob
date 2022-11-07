@@ -4,6 +4,7 @@ import TimeAndAttendanceScreen from "../Screens/TimeAndAttendanceScreen";
 import TaskStack from "./Stacks/TaskStack";
 import AccountScreen from "../Screens/AccountScreen";
 import CustomTabBarIcon from "../Components/CustomTabBarIcon";
+import AlertStack from "./Stacks/AlertStack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, View } from "react-native";
 import { colors } from "../Styles/Colors";
@@ -26,7 +27,7 @@ const AppNavigator = () => {
           tabBarIcon: ({ focused }) => {
             return (
               <CustomTabBarIcon
-                text={i18n.t("tab.task")}
+                text={i18n.t("tab.user")}
                 focused={focused}
                 iconName={"user-alt"}
               />
@@ -45,6 +46,22 @@ const AppNavigator = () => {
                 focused={focused}
                 text={i18n.t("tab.task")}
                 iconName={"tasks"}
+              />
+            );
+          },
+        }}
+      />
+
+      <BottomTabs.Screen
+        name="alert"
+        component={AlertStack}
+        options={{
+          tabBarIcon: ({ focused }) => {
+            return (
+              <CustomTabBarIcon
+                focused={focused}
+                text={i18n.t("tab.alert")}
+                iconName={"exclamation-circle"}
               />
             );
           },
