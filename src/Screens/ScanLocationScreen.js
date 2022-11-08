@@ -9,9 +9,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { setLocation } from "../Features/Alert";
 
-
 const ScanLocationScreen = ({ route, navigation }) => {
-  const { barCode , qrCode, back  } = route.params;
+  const { barCode, qrCode, back } = route.params;
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [scanActived, setScanActived] = useState(false);
@@ -41,12 +40,12 @@ const ScanLocationScreen = ({ route, navigation }) => {
     playSound();
 
     const obj = {
-      id:Date.now(),
+      id: Date.now(),
       type: type,
       ean: data,
     };
 
-    dispatch(setLocation(data))
+    dispatch(setLocation(data));
     navigation.navigate(back);
   };
 
@@ -67,37 +66,40 @@ const ScanLocationScreen = ({ route, navigation }) => {
             onBarCodeScanned={
               !scanned && scanActived ? handleBarCodeScanned : undefined
             }
-            style={StyleSheet.absoluteFillObject}
+            style={StyleSheet.absoluteFill}
           />
         ) : (
           <CustomError title={i18n.t("title.error")} text={error} />
         )}
-      </View>
-      <View style={styles.control}>
-        <TouchableOpacity
-          style={[
-            styles.scanButton,
-            scanActived ? styles.scanButtonActived : styles.scanButtoninactived,
-          ]}
-          onPressIn={activeScan}
-          onPressOut={deactiveScan}
-        >
-          {barCode ? (
-            <MaterialCommunityIcons
-              name="barcode-scan"
-              size={48}
-              color="white"
-            />
-          ) : null}
 
-          {qrCode ? (
-            <MaterialCommunityIcons
-              name="qrcode-scan"
-              size={48}
-              color="white"
-            />
-          ) : null}
-        </TouchableOpacity>
+        <View style={styles.control}>
+          <TouchableOpacity
+            style={[
+              styles.scanButton,
+              scanActived
+                ? styles.scanButtonActived
+                : styles.scanButtoninactived,
+            ]}
+            onPressIn={activeScan}
+            onPressOut={deactiveScan}
+          >
+            {barCode ? (
+              <MaterialCommunityIcons
+                name="barcode-scan"
+                size={48}
+                color="white"
+              />
+            ) : null}
+
+            {qrCode ? (
+              <MaterialCommunityIcons
+                name="qrcode-scan"
+                size={48}
+                color="white"
+              />
+            ) : null}
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -118,14 +120,14 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: "#000000",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     marginBottom: 10,
   },
 
   control: {
     borderRadius: 4,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     height: 90,
   },
 

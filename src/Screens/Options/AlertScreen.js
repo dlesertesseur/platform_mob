@@ -14,10 +14,7 @@ import { useSelector } from "react-redux";
 const AlertScreen = ({ route, navigation }) => {
   const { location } = useSelector((state) => state.alert.value);
   const [pictures, setPictures] = useState([]);
-
-
-  console.log("###### location:", location);
-
+  const [openCamera, setOpenCamera] = useState(false);
 
   const {
     control,
@@ -32,7 +29,7 @@ const AlertScreen = ({ route, navigation }) => {
   });
 
   const getPermission = async () => {
-    const { status } = await ImagePicker.getCameraPermissionsAsync();
+    const { status } = await ImagePicker.getMediaLibraryPermissionsAsync;
     {
       return false;
     }
@@ -40,19 +37,20 @@ const AlertScreen = ({ route, navigation }) => {
   };
 
   const onTakePhoto = async () => {
-    // const isVerified = getPermission();
-    // if (!isVerified) {
-    //   console.log("###### onTakePhoto -> isVerified:" + isVerified);
-    //   return;
-    // }
+    // // const isVerified = getPermission();
+    // // if (!isVerified) {
+    // //   console.log("###### onTakePhoto -> isVerified:" + isVerified);
+    // //   return;
+    // // }
 
-    const image = await ImagePicker.launchCameraAsync({
-      allowsEditing: true,
-      aspect: [16, 9],
-      quality: 1,
-    });
+    // const image = await ImagePicker.launchCameraAsync({
+    //   allowsEditing: true,
+    //   aspect: [16, 9],
+    //   quality: 1,
+    // });
 
-    setPictures([...pictures, image.uri]);
+    // setPictures([...pictures, image.uri]);
+    navigation.navigate("cameraTest");
   };
 
   const onSelectPhoto = async () => {

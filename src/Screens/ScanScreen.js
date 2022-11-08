@@ -37,7 +37,6 @@ const ScanScreen = ({ barCode = true, qrCode = false }) => {
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     playSound();
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
 
     const obj = {
       id:Date.now(),
