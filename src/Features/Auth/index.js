@@ -6,6 +6,7 @@ const initialState = {
       userId: "",
       email: "",
       token: "",
+      photo:""
     },
     loading: false,
     error: "",
@@ -58,6 +59,9 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     resetAuthData: () => initialState,
+    setUserPhoto: (state, action) => {
+      state.value.user.photo = action.payload;
+    },
   },
   extraReducers: {
     //SIGNUP
@@ -100,6 +104,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { resetAuthData } = authSlice.actions;
+export const { resetAuthData, setUserPhoto } = authSlice.actions;
 
 export default authSlice.reducer;

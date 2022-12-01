@@ -8,7 +8,7 @@ import { useState } from "react";
 export default MainNavigator = () => {
   //   const { user } = useSelector((state) => state.auth.value);
 
-  const [userLogged, setUserLogged] = useState(true);
+  const [userLogged, setUserLogged] = useState(false);
 
   //   useEffect(() => {
   //     if (user) {

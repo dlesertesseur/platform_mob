@@ -2,7 +2,6 @@ import React from "react";
 import OptionsMenuScreen from "../../Screens/OptionsMenuScreen";
 import AlertScreen from "../../Screens/Options/AlertScreen";
 import ScanLocationScreen from "../../Screens/ScanLocationScreen";
-import CameraTest from "../../Components/CametaTest";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 

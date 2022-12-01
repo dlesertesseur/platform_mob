@@ -5,6 +5,8 @@ import CustomButton from "../Components/CustomButton";
 import CustomLabel from "../Components/CustomLabel";
 import CustomImage from "../Components/CustomImage";
 import CustomLink from "../Components/CustomLink";
+import CustomAvatar from "../Components/CustomAvatar";
+import HorizontalSeparator from "../Components/HorizontalSeparator";
 import { useForm } from "react-hook-form";
 import { ImageBackground, StyleSheet, View } from "react-native";
 import { colors } from "../Styles/Colors";
@@ -23,7 +25,6 @@ const LoginScreen = ({ navigation }) => {
 
   const onSubmit = (data) => {
     console.log(data);
-    
   };
 
   const focusRef = useRef(null);
@@ -51,12 +52,13 @@ const LoginScreen = ({ navigation }) => {
           text={i18n.t("title.screen.login-desc")}
           fontSize={30}
           color={colors.primary}
-          style={styles.fieldLabel}
         />
+        <HorizontalSeparator height={30} />
+        <CustomAvatar size={128} />
+        <HorizontalSeparator />
 
         <View style={styles.panel}>
           <CustomTextInput
-            style={styles.field}
             control={control}
             name="email"
             placeholder={i18n.t("label.email")}
@@ -67,9 +69,8 @@ const LoginScreen = ({ navigation }) => {
                 message: i18n.t("validation.email.invalid"),
               },
             }}
-            //focusRef={focusRef}
           />
-
+          <HorizontalSeparator />
           <CustomTextInput
             control={control}
             name="password"
@@ -94,8 +95,9 @@ const LoginScreen = ({ navigation }) => {
           />
         </View>
 
+        <HorizontalSeparator/>
         <CustomLink
-          text={i18n.t("label.notAccount")}
+          text={i18n.t("button.notAccount")}
           style={styles.signup}
           onPress={onSingIn}
         />
@@ -112,10 +114,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
 
-  field: {
-    marginBottom: 15,
-  },
-
   image: {
     width: "100%",
     height: "100%",
@@ -127,10 +125,7 @@ const styles = StyleSheet.create({
   },
 
   panel: {
-    // borderRadius: 12,
-    // backgroundColor: colors.secondary,
-    padding: 15,
-    margin: 15,
+    marginHorizontal: 15,
   },
 
   forgotPassword: {

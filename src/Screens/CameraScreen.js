@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
 import { Camera } from "expo-camera";
 
-export default function CameraTest() {
+export default function CameraScreen() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);
   const [image, setImage] = useState(null);
@@ -21,9 +21,11 @@ export default function CameraTest() {
       setImage(data.uri);
     }
   };
+  
   if (hasCameraPermission === false) {
     return <Text>No access to camera</Text>;
   }
+
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.cameraContainer}>
@@ -31,7 +33,7 @@ export default function CameraTest() {
           ref={(ref) => setCamera(ref)}
           style={styles.fixedRatio}
           type={type}
-          ratio={"1:1"}
+          ratio={"16:9"}
         />
       </View>
       <Button
@@ -56,6 +58,6 @@ const styles = StyleSheet.create({
   },
   fixedRatio: {
     flex: 1,
-    aspectRatio: 1,
+    //aspectRatio: 1,
   },
 });

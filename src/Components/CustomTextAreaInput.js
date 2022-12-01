@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
   inputText: {
     width: "100%",
     borderRadius: 8,
-    //backgroundColor: colors.secondary,
     padding: 10,
     color: colors.primary,
     fontSize: 18,
